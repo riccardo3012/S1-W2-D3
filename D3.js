@@ -108,26 +108,38 @@ const starWarsCharacters = [
 let characters = [];
 
 /* ESERCIZIO 2
-  Utilizzando un ciclo for, cicla l'array "".
-  Dovrai accedere alla proprietà "name" di ogni oggetto in esso contenuto, e inserirla nell'
-  array "starWarsCharacters" creato precedentemente. Come risultato dovresti ottenere qualcosa 
+  Utilizzando un ciclo for, cicla l'array "starWarsCharacters".
+  Dovrai accedere alla proprietà "name" di ogni oggetto in esso contenuto, 
+  e inserirla nell' array "characternames" creato precedentemente. 
+  Come risultato dovresti ottenere qualcosa 
   di simile: ["Luke Skywalker", "C-3PO", "R2-D2", etc..]
 */
 
 let characternames = [];
+console.log(starWarsCharacters.length);
 for (let i = 0; i < starWarsCharacters.length; i++) {
+  //per ogni finche i è minore della lunghezza dell A incrementa la variabile//
   characternames.push(starWarsCharacters[i].name);
+  console.log(characternames);
+  console.log("----------");
 }
-console.log(characternames);
 
 /* ESERCIZIO 3
   Seguendo i passaggi precedenti crea un nuovo array chiamato "femaleCharacters" 
   e inserisci al suo interno tutti gli oggetti femminili.
-*/
 
-let femaleCharacters = [];
-for (let i = 0; i < femaleCharacters.length; i++) {
+FIRST TRY:
+let femaleCharacters = []; PERCHE COGLIONE
+for (let i = 0; i < femaleCharacters.length; i++) { IF PER SPECIFICARGLI FC
   femaleCharacters.push(starWarsCharacters[i].gender === "female");
+}
+console.log(femaleCharacters);*/
+let femaleCharacters = [];
+for (let i = 0; i < starWarsCharacters.length; i++) {
+  if (starWarsCharacters[i].gender === "female") {
+    //
+    femaleCharacters.push(starWarsCharacters[i].gender);
+  }
 }
 console.log(femaleCharacters);
 
@@ -136,12 +148,12 @@ console.log(femaleCharacters);
   Ad ognuna di queste proprietà assegna come valore un array vuoto.
 */
 
-let eye_color = {
+let eyeColor = {
   blue: [],
   yellow: [],
   white: [],
   red: [],
-  "blue gray": [],
+  "blue-gray": [], //sai leggere? perche lo spazio se chiede -?//
 };
 
 /* ESERCIZIO 5
@@ -152,34 +164,47 @@ let eye_color = {
 */
 
 for (let i = 0; i < starWarsCharacters.length; i++) {
-  switch (characters.eye_color) {
+  switch (starWarsCharacters[i].eye_color) {
     case "blue":
-      eye_color.blu.push(characters);
+      eyeColor.blue.push(starWarsCharacters);
       break;
     case "white":
-      eye_color.blu.push(characters);
+      eyeColor.white.push(starWarsCharacters);
       break;
     case "red":
-      eye_color.blu.push(characters);
+      eyeColor.red.push(starWarsCharacters);
       break;
     case "yellow":
-      eye_color.blu.push(characters);
+      eyeColor.yellow.push(starWarsCharacters);
       break;
-    case "blue gray":
-      eye_color.blu.push(characters);
+    case "blue-gray":
+      eyeColor["blue-gray"].push(starWarsCharacters);
       break;
   }
 }
-
+console.log(eyeColor);
 /* ESERCIZIO 6
-  Usa un while loop per calcolare la massa totale dell'equipaggio. Salvala in una variabile 
-  chiamata "crewMass".
-*/
+  Usa un while loop per calcolare la massa totale dell'equipaggio. Salvala in una 
+  variabile chiamata "crewMass".
+
+
+  moneee
 let crewMass = 0;
-while (i < starWarsCharacters.length) {
+while (starWarsCharacters.length) {
   crewMass += starWarsCharacters[i].mass;
   i++;
 }
+*/
+
+let crewMass = 0;
+let index = 0;
+
+while (index < starWarsCharacters.length) {
+  crewMass += starWarsCharacters[index].mass;
+  index++;
+}
+
+console.log(crewMass);
 
 /* ESERCIZIO 7
   Crea uno if/else statement per rivelare la tipologia di carico, utilizzando la massa totale, 
@@ -201,6 +226,13 @@ while (i < starWarsCharacters.length) {
   creare un nuovo array)
 */
 
+for (let i = 0; i < starWarsCharacters.length; i++) {
+  if (starWarsCharacters[i].gender === "n/a") {
+    starWarsCharacters[i].gender = "robot";
+  }
+}
+console.log(starWarsCharacters);
+
 /* --EXTRA-- ESERCIZIO 9
   Utilizzando gli elementi presenti nell'array "femaleCharacters" rimuovi dall'array "characters" 
   le stringhe corrispondenti a personaggi con lo stesso nome.
@@ -208,7 +240,18 @@ while (i < starWarsCharacters.length) {
   e dopo l'operazione.
 */
 
+for (let i = 0; i < femaleCharacters.length; i++) {
+  for (let r = 0; r < femaleCharacters.length; r++) {
+    if (femaleCharacters[i].name === femaleCharacters.length[r]) {
+      femaleCharacters.slice(r, 1);
+    }
+  }
+}
+console.log(femaleCharacters);
 /* --EXTRA-- ESERCIZIO 10
   Crea una funzionalità che selezioni un elemento casuale dall'array "starWarsCharacters" e ne 
   stampi in console le proprietà in modo discorsivo (a tuo piacimento).
 */
+let = index;
+index = parseInt(Math.random() * starWarsCharacters.length);
+console.log(starWarsCharacters[index]);
